@@ -1,9 +1,4 @@
-require_relative 'grid'
-require_relative 'cell'
-require_relative 'state'
-require_relative 'display'
-require_relative 'patterns'
-require 'rainbow'
+require_relative './patterns'
 
 class Game
   include Patterns

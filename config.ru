@@ -1,3 +1,3 @@
-require_relative 'app'
+require './app'
 
-run 
+run GameofLife::App.new

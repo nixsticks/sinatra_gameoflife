@@ -8,6 +8,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rainbow (1.1.4)
     ripl (0.7.0)
       bond (~> 0.4.2)
     ripl-multi_line (0.3.1)
@@ -16,8 +17,6 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5)
       ripl (>= 0.3.5)
-    shotgun (0.9)
-      rack (>= 1.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -34,6 +33,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap
-  shotgun
+  rainbow
   sinatra
   tux
