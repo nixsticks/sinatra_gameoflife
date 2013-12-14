@@ -74,7 +74,7 @@ module GameofLife
       end
 
       def glider_guns(game)
-        game.glider_gun(8, 20)
+        game.glider_gun(10, 25)
         # game.glider_gun(8, 50)
       end
     end
