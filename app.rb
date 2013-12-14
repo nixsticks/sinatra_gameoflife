@@ -10,35 +10,44 @@ module GameofLife
   class App < Sinatra::Application
     set :random, Game.new(Grid.new(40,60))
     set :beehives, Game.new(Grid.new(40,60))
+    set :glider_guns, Game.new(Grid.new(40,70))
 
     get '/random' do
       @self = '/random'
-      @random = settings.random
-      random(@random)
-      erb :random
+      @game = settings.random
+      random(@game)
+      erb :game
     end
 
     get '/random_inner' do
       settings.random.grid.next_generation
-      @random = settings.random
-      erb :random_inner, :layout => false
+      @game = settings.random
+      erb :game_inner, :layout => false
     end
 
     get '/beehives' do
       @self = '/beehives'
-      @beehives = settings.beehives
-      beehives(@beehives)
-      erb :beehives
+      @game = settings.beehives
+      beehives(@game)
+      erb :game
     end
 
     get '/beehives_inner' do
       settings.beehives.grid.next_generation
-      @beehives = settings.beehives
-      erb :beehives_inner, :layout => false
+      @game = settings.beehives
+      erb :game_inner, :layout => false
     end
 
-    post '/restart' do
-      @@game = Game.new(Grid.new(40,60)).tap{|game| random(game)}
+    get '/glider_guns' do
+      @self = '/glider_guns'
+      @game = settings.glider_guns.tap {|game| glider_guns(game)}
+      erb :game
+    end
+
+    get '/glider_guns_inner' do
+      settings.glider_guns.grid.next_generation
+      @game = settings.glider_guns
+      erb :game_inner, :layout => false
     end
 
     helpers do
@@ -66,7 +75,7 @@ module GameofLife
 
       def glider_guns(game)
         game.glider_gun(8, 20)
-        game.glider_gun(8, 80)
+        # game.glider_gun(8, 50)
       end
     end
   end
