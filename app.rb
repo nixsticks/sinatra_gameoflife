@@ -9,16 +9,6 @@ end
 module GameofLife
   class App < Sinatra::Application
 
-    # before do
-    #   @@game ||= Game.new(Grid.new(40,60)).tap{|game| random(game)}
-    # end
-
-    get '/' do
-      @@game.grid.next_generation
-      @game = @@game
-      erb :index
-    end
-
     get '/random' do
       @self = '/random'
       @@random ||= Game.new(Grid.new(40,60)).tap{|game| random(game)}
