@@ -2,6 +2,7 @@ Dir.glob('./lib/*.rb') do |model|
   require model
 end
 
+require 'Matrix'
 require 'bundler'
 Bundler.require
 

@@ -1,5 +1,3 @@
-require 'Matrix'
-
 class Grid
   attr_accessor :cells
   attr_reader :x, :y
