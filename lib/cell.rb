@@ -9,7 +9,6 @@ class Cell
     @grid = grid
     @x = x
     @y = y
-    @grid.cells["#{@x},#{@y}"] = self
   end
 
   def live_neighbors
@@ -37,11 +36,15 @@ class Cell
       n_x = x + n[0]
       n_y = y + n[1]
 
-      grid.cells["#{n_x},#{n_y}"] if exists?(n_x) && exists?(n_y)
+      grid.cells[n_x, n_y] if exists?(n_x) && exists?(n_y)
     end.compact
   end
 
   def exists?(number)
     number >= 0
+  end
+
+  def display
+    alive? ? "<div class='alive'></div>" : "<div class='dead'></div>"
   end
 end
