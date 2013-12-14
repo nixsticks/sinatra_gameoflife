@@ -1,13 +1,13 @@
 .alive {
   background-color: #FE4365;
   border-radius: 90%;
-  min-height: 10px;
-  min-width: 10px;
+  min-height: 20px;
+  min-width: 20px;
 }
 
 .dead {
   background-color: white;
   border-radius: 90%;
-  min-height: 10px;
-  min-width: 10px;
+  min-height: 20px;
+  min-width: 20px;
 }
