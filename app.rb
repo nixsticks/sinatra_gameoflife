@@ -17,13 +17,12 @@ module GameofLife
       settings.beehives.beehive(5, 5)
       settings.beehives.beehive(5, 25)
       settings.beehives.beehive(5, 45)
-      settings.random.grid.populate_random
     end
 
     get '/random' do
       @self = '/random'
       @game = settings.random
-      # random(@game)
+      random(@game)
       erb :game
     end
 
