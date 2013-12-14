@@ -1,47 +1,44 @@
 module Patterns
-  def glider_gun
-    start_x = 5
-    half_y = grid.y/2
+  def glider_gun(x, y)
+    grid.cells[(x), (y - 15)].set_live
+    grid.cells[(x), (y - 16)].set_live
+    grid.cells[(x + 1), (y - 15)].set_live
+    grid.cells[(x + 1), (y - 16)].set_live
 
-    grid.cells[(start_x), (half_y - 15)].set_live
-    grid.cells[(start_x), (half_y - 16)].set_live
-    grid.cells[(start_x + 1), (half_y - 15)].set_live
-    grid.cells[(start_x + 1), (half_y - 16)].set_live
+    grid.cells[(x - 2), (y - 4)].set_live
+    grid.cells[(x - 2), (y - 3)].set_live
+    grid.cells[(x - 1), (y - 5)].set_live
+    grid.cells[(x - 1), (y - 1)].set_live
+    grid.cells[(x), (y - 6)].set_live
+    grid.cells[(x), (y)].set_live
+    grid.cells[(x + 1), (y - 6)].set_live
+    grid.cells[(x + 1), (y - 2)].set_live
+    grid.cells[(x + 1), (y)].set_live
+    grid.cells[(x + 1), (y + 1)].set_live
+    grid.cells[(x + 2), (y - 6)].set_live
+    grid.cells[(x + 2), (y)].set_live
+    grid.cells[(x + 3), (y - 5)].set_live
+    grid.cells[(x + 3), (y - 1)].set_live
+    grid.cells[(x + 4), (y - 4)].set_live
+    grid.cells[(x + 4), (y - 3)].set_live
 
-    grid.cells[(start_x - 2), (half_y - 4)].set_live
-    grid.cells[(start_x - 2), (half_y - 3)].set_live
-    grid.cells[(start_x - 1), (half_y - 5)].set_live
-    grid.cells[(start_x - 1), (half_y - 1)].set_live
-    grid.cells[(start_x), (half_y - 6)].set_live
-    grid.cells[(start_x), (half_y)].set_live
-    grid.cells[(start_x + 1), (half_y - 6)].set_live
-    grid.cells[(start_x + 1), (half_y - 2)].set_live
-    grid.cells[(start_x + 1), (half_y)].set_live
-    grid.cells[(start_x + 1), (half_y + 1)].set_live
-    grid.cells[(start_x + 2), (half_y - 6)].set_live
-    grid.cells[(start_x + 2), (half_y)].set_live
-    grid.cells[(start_x + 3), (half_y - 5)].set_live
-    grid.cells[(start_x + 3), (half_y - 1)].set_live
-    grid.cells[(start_x + 4), (half_y - 4)].set_live
-    grid.cells[(start_x + 4), (half_y - 3)].set_live
+    grid.cells[(x - 4), (y + 8)].set_live
+    grid.cells[(x - 3), (y + 6)].set_live
+    grid.cells[(x - 3), (y + 8)].set_live
+    grid.cells[(x - 2), (y + 4)].set_live
+    grid.cells[(x - 2), (y + 5)].set_live
+    grid.cells[(x - 1), (y + 4)].set_live
+    grid.cells[(x - 1), (y + 5)].set_live
+    grid.cells[(x), (y + 4)].set_live
+    grid.cells[(x), (y + 5)].set_live
+    grid.cells[(x + 1), (y + 6)].set_live
+    grid.cells[(x + 1), (y + 8)].set_live
+    grid.cells[(x + 2), (y + 8)].set_live
 
-    grid.cells[(start_x - 4), (half_y + 8)].set_live
-    grid.cells[(start_x - 3), (half_y + 6)].set_live
-    grid.cells[(start_x - 3), (half_y + 8)].set_live
-    grid.cells[(start_x - 2), (half_y + 4)].set_live
-    grid.cells[(start_x - 2), (half_y + 5)].set_live
-    grid.cells[(start_x - 1), (half_y + 4)].set_live
-    grid.cells[(start_x - 1), (half_y + 5)].set_live
-    grid.cells[(start_x), (half_y + 4)].set_live
-    grid.cells[(start_x), (half_y + 5)].set_live
-    grid.cells[(start_x + 1), (half_y + 6)].set_live
-    grid.cells[(start_x + 1), (half_y + 8)].set_live
-    grid.cells[(start_x + 2), (half_y + 8)].set_live
-
-    grid.cells[(start_x - 2), (half_y + 18)].set_live
-    grid.cells[(start_x - 2), (half_y + 19)].set_live
-    grid.cells[(start_x - 1), (half_y + 18)].set_live
-    grid.cells[(start_x - 1), (half_y + 19)].set_live
+    grid.cells[(x - 2), (y + 18)].set_live
+    grid.cells[(x - 2), (y + 19)].set_live
+    grid.cells[(x - 1), (y + 18)].set_live
+    grid.cells[(x - 1), (y + 19)].set_live
   end
 
   def beehive(row, column)

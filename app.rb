@@ -9,7 +9,7 @@ module GameofLife
   class App < Sinatra::Application
 
     before do
-      @@game ||= Game.new(Grid.new(60,120).tap{|grid| grid.populate_random})
+      @@game ||= Game.new(Grid.new(60,120)).tap{|game| beehives(game)}
     end
 
     get '/' do
@@ -29,11 +29,27 @@ module GameofLife
     end
 
     helpers do
-      def setup(game)
+      def beehives(game)
         game.beehive(5, 5)
-        game.beehive(25, 25)
         game.beehive(5, 25)
+        game.beehive(5, 45)
+        game.beehive(5, 65)
+        game.beehive(5, 85)
         game.beehive(25, 5)
+        game.beehive(25, 25)
+        game.beehive(25, 45)
+        game.beehive(25, 65)
+        game.beehive(25, 85)
+        game.beehive(45, 5)
+        game.beehive(45, 25)
+        game.beehive(45, 45)
+        game.beehive(45, 65)
+        game.beehive(45, 85)
+      end
+
+      def glider_guns(game)
+        game.glider_gun(8, 20)
+        game.glider_gun(8, 80)
       end
     end
   end
