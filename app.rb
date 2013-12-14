@@ -13,10 +13,6 @@ module GameofLife
       @@game ||= Game.new(Grid.new(60,120)).tap{|game| beehives(game)}
     end
 
-    get '/' do
-      erb :index
-    end
-
     get '/game_of_life' do
       @@game.grid.next_generation
       @game = @@game
