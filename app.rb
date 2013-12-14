@@ -1,10 +1,10 @@
-Dir.glob('./lib/*.rb') do |model|
-  require model
-end
-
 require 'matrix'
 require 'bundler'
 Bundler.require
+
+Dir.glob('./lib/*.rb') do |model|
+  require model
+end
 
 module GameofLife
   class App < Sinatra::Application
