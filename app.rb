@@ -12,10 +12,18 @@ module GameofLife
     set :beehives, Game.new(Grid.new(40,60))
     set :glider_guns, Game.new(Grid.new(40,70))
 
+    configure do
+      settings.glider_guns.glider_gun(10, 25)
+      settings.beehives.beehive(5, 5)
+      settings.beehives.beehive(5, 25)
+      settings.beehives.beehive(5, 45)
+      settings.random.grid.populate_random
+    end
+
     get '/random' do
       @self = '/random'
       @game = settings.random
-      random(@game)
+      # random(@game)
       erb :game
     end
 
@@ -28,7 +36,7 @@ module GameofLife
     get '/beehives' do
       @self = '/beehives'
       @game = settings.beehives
-      beehives(@game)
+      # beehives(@game)
       erb :game
     end
 
@@ -40,7 +48,7 @@ module GameofLife
 
     get '/glider_guns' do
       @self = '/glider_guns'
-      @game = settings.glider_guns.tap {|game| glider_guns(game)}
+      @game = settings.glider_guns
       erb :game
     end
 
