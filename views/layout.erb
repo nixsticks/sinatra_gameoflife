@@ -1,12 +1,27 @@
 <!doctype html>
 <html>
-<head>
-  <link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/styles/styles.css">
-  <meta http-equiv="Refresh" content="0">
-  <title></title>
-</head>
-<body>
-  <%= yield %>
-</body>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+    <script>
+     $(document).ready(function() {
+      console.log("ready");
+       $("#container").load("<%= @self %>_inner");
+         var refreshId = setInterval(function() {
+          console.log("loadin");
+            $("#container").load('<%= @self %>_inner?randval='+ Math.random());
+         }, 200);
+         $.ajaxSetup({ cache: false });
+      });
+    </script>
+    <title>Conway's Game of Life</title>
+  </head>
+  <body>
+    <div id="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>
+
+    

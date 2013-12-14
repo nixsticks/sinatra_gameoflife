@@ -9,14 +9,44 @@ end
 module GameofLife
   class App < Sinatra::Application
 
-    before do
-      @@game ||= Game.new(Grid.new(20,60)).tap{|game| beehives(game)}
-    end
+    # before do
+    #   @@game ||= Game.new(Grid.new(40,60)).tap{|game| random(game)}
+    # end
 
     get '/' do
       @@game.grid.next_generation
       @game = @@game
       erb :index
+    end
+
+    get '/random' do
+      @self = '/random'
+      @@random ||= Game.new(Grid.new(40,60)).tap{|game| random(game)}
+      @random = @@random
+      erb :random
+    end
+
+    get '/random_inner' do
+      @@random.grid.next_generation
+      @random = @@random
+      erb :random_inner, :layout => false
+    end
+
+    get '/beehives' do
+      @self = '/beehives'
+      @@beehives ||= Game.new(Grid.new(40,60)).tap{|game| beehives(game)}
+      @beehives = @@beehives
+      erb :beehives
+    end
+
+    get '/beehives_inner' do
+      @@beehives.grid.next_generation
+      @beehives = @@beehives
+      erb :beehives_inner, :layout => false
+    end
+
+    post '/restart' do
+      @@game = Game.new(Grid.new(40,60)).tap{|game| random(game)}
     end
 
     helpers do
