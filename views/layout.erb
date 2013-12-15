@@ -6,14 +6,13 @@
     <link rel="stylesheet" type="text/css" href="/styles/styles.css">
     <script>
      $(document).ready(function() {
-      console.log("ready");
-       $("#container").load("<%= @self %>_inner");
-         var refreshId = setInterval(function() {
-          console.log("loadin");
-            $("#container").load('<%= @self %>_inner?randval='+ Math.random());
-         }, 200);
-         $.ajaxSetup({ cache: false });
-      });
+      function loadNext() {
+        $("#container").load("<%= @self %>_inner?randval="+ Math.random(), function() {
+          setTimeout(loadNext, 200);
+        });
+      }
+     loadNext();
+    });
     </script>
     <title>Conway's Game of Life</title>
   </head>
@@ -23,5 +22,3 @@
     </div>
   </body>
 </html>
-
-    

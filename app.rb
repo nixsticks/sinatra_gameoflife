@@ -35,7 +35,6 @@ module GameofLife
     get '/beehives' do
       @self = '/beehives'
       @game = settings.beehives
-      # beehives(@game)
       erb :game
     end
 
