@@ -1,9 +1,33 @@
-<table>
-  <% @game.grid.cells.to_a.each do |row| %>
-    <tr>
-      <% row.each do |cell| %>
-        <td><%= cell.display %></td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css">
+    <title>conway's game of life</title>
+  </head>
+  <body class="index">
+    <div class="intro">
+      <h1>conway's game of life</h1>
+      <div class="link1">
+        <div class="button">
+          <h3>
+            <a href="/random">random</a>
+          </h3>
+        </div>
+      </div>
+      <div class="link2">
+        <div class="button">
+          <h3>
+            <a href="/beehives">beehives</a>
+          </h3>
+        </div>
+      </div>
+      <div class="link3">
+        <div class="button">
+          <h3>
+            <a href="/glider_guns">glider gun</a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

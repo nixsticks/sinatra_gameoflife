@@ -19,6 +19,10 @@ module GameofLife
       settings.beehives.beehive(5, 45)
     end
 
+    get '/' do
+      erb :index, :layout => false
+    end
+
     get '/random' do
       @self = '/random'
       @game = settings.random
