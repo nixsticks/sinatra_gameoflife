@@ -4,7 +4,7 @@
   $(document).ready(function() {
     function loadNext() {
       $('#container').load('/<%= @inner %>?randval='+ Math.random(), function() {
-        setTimeout(loadNext, 50);
+        setTimeout(loadNext, 20);
       });
     }
   loadNext();
