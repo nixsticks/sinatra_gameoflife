@@ -1,24 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/styles/styles.css">
-    <script>
-     $(document).ready(function() {
-      function loadNext() {
-        $("#container").load("<%= @self %>_inner?randval="+ Math.random(), function() {
-          setTimeout(loadNext, 50);
-        });
-      }
-     loadNext();
-    });
-    </script>
     <title>Conway's Game of Life</title>
+    <%= simple_partial :_reloader if @reload %>
   </head>
   <body>
-    <div id="container">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>

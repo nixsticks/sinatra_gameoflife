@@ -1,3 +1,4 @@
+require 'rack/session/moneta'
 require 'matrix'
 require 'bundler'
 Bundler.require
@@ -8,55 +9,54 @@ end
 
 module GameofLife
   class App < Sinatra::Application
-    set :random, Game.new(Grid.new(40,60))
-    set :beehives, Game.new(Grid.new(40,60))
-    set :glider_guns, Game.new(Grid.new(40,70))
-
-    configure do
-      settings.glider_guns.glider_gun(10, 25)
-      settings.beehives.beehive(5, 5)
-      settings.beehives.beehive(5, 25)
-      settings.beehives.beehive(5, 45)
-    end
+    use Rack::Session::Moneta, :store => Moneta.new(:Memory, :expires => true)
 
     get '/' do
-      erb :index, :layout => false
+      erb :index
     end
 
     get '/random' do
-      @self = '/random'
-      @game = settings.random
+      session[:random] = Game.new(Grid.new(40,60))
+      @game = session[:random]
+      @reload = true
+      @inner = "random_inner"
       random(@game)
       erb :game
     end
 
     get '/random_inner' do
-      settings.random.grid.next_generation
-      @game = settings.random
+      @game = session[:random]
+      @game.grid.next_generation
       erb :game_inner, :layout => false
     end
 
     get '/beehives' do
-      @self = '/beehives'
-      @game = settings.beehives
+      session[:beehives] = Game.new(Grid.new(40,60))
+      @game = session[:beehives]
+      @reload = true
+      @inner = "beehives_inner"
+      beehives(@game)
       erb :game
     end
 
     get '/beehives_inner' do
-      settings.beehives.grid.next_generation
-      @game = settings.beehives
+      @game = session[:beehives]
+      @game.grid.next_generation
       erb :game_inner, :layout => false
     end
 
     get '/glider_guns' do
-      @self = '/glider_guns'
-      @game = settings.glider_guns
+      session[:guns] = Game.new(Grid.new(40,60))
+      @game = session[:guns]
+      @reload = true
+      @inner = "glider_guns_inner"
+      glider_guns(@game)
       erb :game
     end
 
     get '/glider_guns_inner' do
-      settings.glider_guns.grid.next_generation
-      @game = settings.glider_guns
+      @game = session[:guns]
+      @game.grid.next_generation
       erb :game_inner, :layout => false
     end
 
@@ -86,6 +86,10 @@ module GameofLife
       def glider_guns(game)
         game.glider_gun(10, 25)
         # game.glider_gun(8, 50)
+      end
+
+      def simple_partial(template)
+        erb template
       end
     end
   end
